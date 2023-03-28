@@ -1,15 +1,5 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-# In[ ]:
-
-
-#pip install medmnist
-
-
-# In[1]:
-
-
 from tqdm import tqdm
 import numpy as np
 import torch
