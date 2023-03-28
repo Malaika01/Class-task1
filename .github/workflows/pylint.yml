@@ -1,13 +1,62 @@
 name: Pylint
 
-on: [push]
+on: 
+  push:
+    branches:
+      - main
+      - branch1
+      - branch2
 
 jobs:
-  build:
+  build-main:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.9"]
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install pylint
+    - name: Analysing the code with pylint
+      run: |
+        pylint CNN.py --disable=C0301,C0303,C0103,C0114,C0116,C0411,W0621,W0718,W0104,E0001
+
+  build-branch1:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9"]
+    if: github.ref == 'refs/heads/branch1'
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install pylint
+    - name: Analysing the code with pylint
+      run: |
+        pylint CNN.py --disable=C0301,C0303,C0103,C0114,C0116,C0411,W0621,W0718,W0104,E0001
+        
+ 
+  build-branch2:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9"]
+    if: github.ref == 'refs/heads/branch2'
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python ${{ matrix.python-version }}
