@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM('*/5 * * * *')
+    }
+    stages {
+        stage('Pull Repository') {
+            steps {
+                git branch: 'master', url: 'https://github.com/Malaika01/Class-task1.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh "git clone https://${USERNAME}:${PASSWORD}@github.com/myorg/myrepo.git"
+                    echo "built successful"
+                }
+            }
+        }
+    }
+}
