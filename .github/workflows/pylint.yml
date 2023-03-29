@@ -6,6 +6,10 @@ on:
       - main
       - branch1
       - branch2
+  pull_request:
+    branches-ignore:
+      - main
+  
 
 jobs:
   build-main:
