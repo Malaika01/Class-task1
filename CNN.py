@@ -54,7 +54,7 @@ if __name__ == '__main__':
     model = CNN()
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.5)
-
+    #10 epochs are used
     for epoch in range(10):
         running_loss = 0.0
                 running_loss = 0.0
