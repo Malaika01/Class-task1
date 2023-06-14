@@ -42,7 +42,6 @@ class Dataset(data.Dataset):
 
     def __len__(self):
         return len(self.data)
-#transforming data
 if __name__ == '__main__':
     transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])
     train_data = Dataset(torch.load('train_data.pt'), torch.load('train_labels.pt'), transform=transform)
