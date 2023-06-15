@@ -2,6 +2,7 @@ from torch import nn, optim
 from torch.utils import data
 from torchvision import transforms
 import torch
+#this is the implementation of CNN model
 
 #Creating CNN class
 class CNN(nn.Module):
