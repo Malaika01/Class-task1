@@ -3,6 +3,8 @@ from torch.utils import data
 from torchvision import transforms
 import torch
 #this is the implementation of CNN model
+
+#Create CNN class
 class CNN(nn.Module):
     """
     Convolutional Neural Network for image classification
