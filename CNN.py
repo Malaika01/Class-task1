@@ -2,7 +2,7 @@ from torch import nn, optim
 from torch.utils import data
 from torchvision import transforms
 import torch
-
+#this is the implementation of CNN model
 class CNN(nn.Module):
     """
     Convolutional Neural Network for image classification
